@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: "${SPRING_APPLICATION_NAME}"
+  cloud:
+    gateway:
+      routes:
+        - id: REVIEW-SERVICE
+          uri: lb://REVIEW-SERVICE
+          predicates:
+            - Path=/review/**
+        - id: RESERVATION-SERVICE
+          uri: lb://RESERVATION-SERVICE
+          predicates:
+            - Path=/reservations/**
+        - id: EMPLOYEE-SERVICE
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+            - Path=/employee/**
+  config:
+    import: "optional:${SPRING_CONFIG_IMPORT}"

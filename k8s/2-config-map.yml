@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hrmis-config-map
+data:
+  SPRING_CONFIG_IMPORT: "configserver:http://config-server-0.config-server:8888/"
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eureka-0.eureka:8761/eureka/"
+  EUREKA_HOSTNAME: "eureka-0"
+  CONFIGSERVER_APPLICATION_NAME: config-server
+  EUREKA_APPLICATION_NAME: eureka-server
+  REVIEW_SERVICE_APPLICATION_NAME: review-service
+  RESERVATION_SERVICE_APPLICATION_NAME: reservation-service
+  EMPLOYEE_SERVICE_APPLICATION_NAME: employee-service
+  API_GATEWAY_APPLICATION_NAME: api-gateway

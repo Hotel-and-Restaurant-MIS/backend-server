@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: "${SPRING_APPLICATION_NAME}"
+  config:
+    import: "optional:${SPRING_CONFIG_IMPORT}"
+
+eureka:
+  instance:
+    hostname: "${HOSTNAME}.eureka"
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: "${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}"
+  # from: https://github.com/spring-cloud-samples/eureka/blob/master/src/main/resources/application.yml
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    response-cache-update-interval-ms: 5000

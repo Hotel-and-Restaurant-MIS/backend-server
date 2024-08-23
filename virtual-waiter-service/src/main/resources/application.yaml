@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: virtual-waiter-service
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://mysql-2177d56c-hotel-manager.k.aivencloud.com:14405/virtual_waiter_db?ssl-mode=REQUIRED
+    username: avnadmin
+    password: AVNS_5xwlPIz21aKxECRK3nZ
+    driver-class-name: com.mysql.cj.jdbc.Driver

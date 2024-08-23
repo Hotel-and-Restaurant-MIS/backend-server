@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: "${SPRING_APPLICATION_NAME}"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://mysql-2177d56c-hotel-manager.k.aivencloud.com:14405/employee_db?ssl-mode=REQUIRED
+    username: avnadmin
+    password: AVNS_5xwlPIz21aKxECRK3nZ
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  config:
+    import: "optional:${SPRING_CONFIG_IMPORT}"
