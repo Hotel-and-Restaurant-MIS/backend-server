@@ -18,7 +18,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
-  GKE_CLUSTER: hrmis-cluster
+  GKE_CLUSTER: hrmis-cluster-1
   GKE_ZONE: us-central1-c
 
 jobs:
