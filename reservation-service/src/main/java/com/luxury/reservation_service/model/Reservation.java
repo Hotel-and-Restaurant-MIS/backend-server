@@ -1,5 +1,6 @@
 package com.luxury.reservation_service.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +17,11 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate checkinDate;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate checkoutDate;
     private Integer roomQuantity;
 

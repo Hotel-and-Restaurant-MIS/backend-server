@@ -1,5 +1,6 @@
 package com.luxury.reservation_service.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,7 +20,11 @@ public class Booking {
     private Long bookingID;
 
     private String roomTypeName;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate checkinDate;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate checkoutDate;
     private Integer roomQuantity;
 
