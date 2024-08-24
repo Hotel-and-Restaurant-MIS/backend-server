@@ -39,7 +39,7 @@ jobs:
         cache: maven
       
     - name: Package Config Server
-      run: mvn package --file config-server/pom.xml
+      run: mvn package -DskipTests --file config-server/pom.xml
     
     - name: Build Config Server Docker Image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-config-server:0.0.1 config-server/
@@ -51,7 +51,7 @@ jobs:
 
 
     - name: Package Eureka Server
-      run: mvn package --file eureka-server/pom.xml
+      run: mvn package -DskipTests --file eureka-server/pom.xml
     
     - name: Build Eureka Server Docker Image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-eureka-server:0.0.1 eureka-server/
@@ -63,7 +63,7 @@ jobs:
 
 
     - name: Package Review Service
-      run: mvn package --file review-service/pom.xml
+      run: mvn package -DskipTests --file review-service/pom.xml
     
     - name: Build Review Service Docker Image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-review-service:0.0.1 review-service/
@@ -74,7 +74,7 @@ jobs:
 
 
     - name: Package Reservation Service
-      run: mvn package --file reservation-service/pom.xml
+      run: mvn package -DskipTests --file reservation-service/pom.xml
     
     - name: Build Reservation Service Docker Image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-reservation-service:0.0.1 reservation-service/
@@ -85,7 +85,7 @@ jobs:
 
 
     - name: Package Employee Service
-      run: mvn package --file employee-service/pom.xml
+      run: mvn package -DskipTests --file employee-service/pom.xml
     
     - name: Build Employee Service Docker Image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-employee-service:0.0.1 employee-service/
@@ -93,6 +93,17 @@ jobs:
     - name: Push Employee Service Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/sep-17-employee-service:0.0.1
 
+
+
+    - name: Package API Gateway
+      run: mvn package -DskipTests --file api-gateway/pom.xml
+    
+    - name: Build API Gateway Docker Image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-api-gateway:0.0.1 api-gateway/
+
+    - name: Push API Gateway Docker Image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/sep-17-api-gateway:0.0.1
+  
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -107,5 +118,3 @@ jobs:
         ZONE_NAME: ${{ env.GKE_ZONE }}
       with:
         args: apply -f k8s/
-
-    
