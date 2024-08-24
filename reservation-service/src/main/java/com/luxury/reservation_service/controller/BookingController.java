@@ -28,6 +28,7 @@ public class BookingController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Booking>> getAllBookings() {
+        //Get all bookings
         return bookingService.getAllBookings();
     }
 
