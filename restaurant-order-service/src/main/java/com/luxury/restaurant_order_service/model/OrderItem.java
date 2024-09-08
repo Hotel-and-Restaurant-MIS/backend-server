@@ -15,20 +15,19 @@ import java.util.List;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderItemId;
+    private Long orderItemId;
 
     @OneToOne
-    @JoinColumn(name = "menu_item_id",nullable = false)
+//    @JoinColumn(name = "menu_item_id",nullable = false)
     private MenuItem menuItem;
 
     private Integer quantity;
     private Double totalPrice;
     private String specialNote;
-    private Integer tableId;
     private Date dateTime;
 
     @OneToMany
-    @JoinColumn(name="selected_addon",nullable = false)
+//    @JoinColumn(name="selected_addon",nullable = false)
     private List<AddOn> selectedAddOns;
 
 }

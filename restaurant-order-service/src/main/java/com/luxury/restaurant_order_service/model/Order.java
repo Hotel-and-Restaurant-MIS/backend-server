@@ -1,6 +1,6 @@
 package com.luxury.restaurant_order_service.model;
 
-import com.luxury.restaurant_order_service.OrderStatus;
+import com.luxury.restaurant_order_service.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

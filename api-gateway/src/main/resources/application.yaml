@@ -25,5 +25,9 @@ spring:
           uri: lb://EMPLOYEE-SERVICE
           predicates:
             - Path=/employee/**
+        - id: RESTAURANT-ORDER-SERVICE
+          uri: lb://RESTAURANT-ORDER-SERVICE
+          predicates:
+            - Path=/order/**
   config:
     import: "optional:${SPRING_CONFIG_IMPORT}"
