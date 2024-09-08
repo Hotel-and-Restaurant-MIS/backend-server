@@ -24,15 +24,15 @@ public class MenuItem {
     private Double menuItemPrice;
 
     @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false)
+//    @JoinColumn(name = "category_id",nullable = false)
     private Category category;
 
     @OneToMany
-    @JoinColumn(name = "menu_item_addon",nullable = false)
+//    @JoinColumn(name = "menu_item_addon",nullable = false)
     private List<AddOn> addOns;
 
     @OneToMany
-    @JoinColumn(name = "menu_item_tag", nullable = false)
+//    @JoinColumn(name = "menu_item_tag", nullable = false)
     private List<Tag> tags;
 
 }
