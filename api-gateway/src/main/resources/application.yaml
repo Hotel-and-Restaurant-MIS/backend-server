@@ -3,15 +3,6 @@ spring:
     name: "${SPRING_APPLICATION_NAME}"
   cloud:
     gateway:
-      globalcors:
-        add-to-simple-url-handler-mapping: true
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedHeaders: "*"
-            allowedMethods:
-              - GET
-              - POST
       routes:
         - id: REVIEW-SERVICE
           uri: lb://REVIEW-SERVICE
