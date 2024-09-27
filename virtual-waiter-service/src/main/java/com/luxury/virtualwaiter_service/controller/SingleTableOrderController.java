@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/singleTableOrder")
+@RequestMapping("/vw/singleTableOrder")
 public class SingleTableOrderController {
 
     private final SingleTableOrderService singleTableOrderService;

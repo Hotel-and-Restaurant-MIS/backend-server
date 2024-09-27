@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/addOn")
+@RequestMapping("/vw/addOn")
 public class AddOnController {
 
     private final AddOnService addOnService;
