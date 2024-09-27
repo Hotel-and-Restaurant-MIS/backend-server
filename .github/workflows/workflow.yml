@@ -93,7 +93,23 @@ jobs:
     - name: Push Employee Service Docker Image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/sep-17-employee-service:0.0.1
 
+    - name: Package Restaurant Order Service
+      run: mvn package -DskipTests --file restaurant-order-service/pom.xml
+    
+    - name: Build Restaurant Order Service Docker Image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-restaurant-order-service:0.0.1 restaurant-order-service/
 
+    - name: Push Restaurant Order Service Docker Image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/sep-17-restaurant-order-service:0.0.1
+
+    - name: Package Virtual Waiter Service
+      run: mvn package -DskipTests --file virtual-waiter-service/pom.xml
+    
+    - name: Build Virtual Waiter Service Docker Image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sep-17-virtual-waiter-service:0.0.1 virtual-waiter-service/
+
+    - name: Push Virtual Waiter Service Docker Image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/sep-17-virtual-waiter-service:0.0.1
 
     - name: Package API Gateway
       run: mvn package -DskipTests --file api-gateway/pom.xml

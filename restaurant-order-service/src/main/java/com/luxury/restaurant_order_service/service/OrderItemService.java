@@ -19,6 +19,6 @@ public class OrderItemService {
     public List<OrderItem> getAllOrderItems(){
         return orderItemRepository.findAll();
     }
-
-
 }
+
+//this is unwanted. list of orderItems is with the order object.

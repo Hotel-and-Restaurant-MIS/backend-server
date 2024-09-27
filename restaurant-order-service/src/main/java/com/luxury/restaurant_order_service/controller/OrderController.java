@@ -1,5 +1,6 @@
 package com.luxury.restaurant_order_service.controller;
 
+import com.luxury.restaurant_order_service.dto.OrderDTO;
 import com.luxury.restaurant_order_service.model.Order;
 import com.luxury.restaurant_order_service.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,7 @@ public class OrderController {
     }
 
     @PostMapping("/add")
-    public Order addOrder(@RequestBody Order order){
-        return orderService.addOrder(order);
+    public Order addOrder(@RequestBody OrderDTO orderDTO){
+        return orderService.addOrder(orderDTO);
     }
-
 }

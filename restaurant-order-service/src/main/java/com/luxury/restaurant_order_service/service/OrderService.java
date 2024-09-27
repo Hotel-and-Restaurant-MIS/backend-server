@@ -1,5 +1,7 @@
 package com.luxury.restaurant_order_service.service;
 
+import com.luxury.restaurant_order_service.dto.OrderDTO;
+import com.luxury.restaurant_order_service.enums.OrderStatus;
 import com.luxury.restaurant_order_service.model.Order;
 import com.luxury.restaurant_order_service.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,17 @@ public class OrderService {
     }
 
 
-    public Order addOrder(Order order) {
-        return orderRepository.save(order);
+    public Order addOrder(OrderDTO orderDTO) {
+        try {
+            var newOrder = Order.builder()
+                    .orderStatus(OrderStatus.PENDING)
+                    .orderTotal(orderDTO.orderTotal())
+                    .orderItems(orderDTO.orderItemList())
+                    .tableId(orderDTO.tableId())
+                    .build();
+            return orderRepository.save(newOrder);
+        }catch (Exception e){
+            throw new RuntimeException("Failed to add new order");
+        }
     }
 }

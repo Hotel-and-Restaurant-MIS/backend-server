@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/menuItem")
+@RequestMapping("/vw/menuItem")
 public class MenuItemController {
 
     private final MenuItemService menuItemService;
