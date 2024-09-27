@@ -20,5 +20,9 @@ spring:
           uri: lb://RESTAURANT-ORDER-SERVICE
           predicates:
             - Path=/order/**
+        - id: VIRTUAL-WAITER-SERVICE
+          uri: lb://VIRTUAL-WAITER-SERVICE
+          predicates:
+            - Path=/vw/**
   config:
     import: "optional:${SPRING_CONFIG_IMPORT}"
