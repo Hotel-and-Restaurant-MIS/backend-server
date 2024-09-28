@@ -1,5 +1,6 @@
 package com.luxury.reservation_service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,8 +15,6 @@ import java.util.List;
 public class RoomType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String roomTypeName;
 
     private Double pricePerDay;
@@ -23,6 +22,7 @@ public class RoomType {
     private Integer quantity;
     private Integer noOfPersons;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "roomType")
     private List<Reservation> reservations;
 
