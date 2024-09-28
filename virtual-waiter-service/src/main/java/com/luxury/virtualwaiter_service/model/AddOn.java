@@ -1,5 +1,6 @@
 package com.luxury.virtualwaiter_service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class AddOn {
     private String addOnName;
     private Double addOnPrice;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "menu_item_id", nullable = false)
     private MenuItem menuItem;

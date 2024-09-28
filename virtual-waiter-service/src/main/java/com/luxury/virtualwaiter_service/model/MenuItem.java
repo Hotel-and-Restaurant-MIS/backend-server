@@ -1,5 +1,6 @@
 package com.luxury.virtualwaiter_service.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,11 +26,13 @@ public class MenuItem {
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // Eager fetching to ensure tags are loaded
     @JoinTable(
             name = "menu_item_tag",
             joinColumns = @JoinColumn(name = "menu_item_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
+
+    @JsonManagedReference
     private List<Tag> tags;
 }

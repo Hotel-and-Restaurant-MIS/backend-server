@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="928ce287-df9c-4e31-8273-b6ddfbce05fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/restaurant-order-service/src/main/java/com/luxury/restaurant_order_service/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +16,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AshenSandeep"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AshenSandeep&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Hotel-and-Restaurant-MIS/backend-server.git",
-    "accountId": "5f5cdb5b-b811-4e4d-8e8f-7928f246ff52"
+    "accountId": "ef3dd7b5-9e70-480c-a6c3-f5f1fb952654"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -39,14 +39,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ashen__dev",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/5th Semester/SE Project/Project/backend-server/config-server",
+    "last_opened_file_path": "F:/SoftwareProject/Backend/backend/backend-server/virtual-waiter-service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -67,6 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724389554735</updated>
       <workItem from="1725515725709" duration="679000" />
+      <workItem from="1727542466089" duration="445000" />
     </task>
     <servers />
   </component>
