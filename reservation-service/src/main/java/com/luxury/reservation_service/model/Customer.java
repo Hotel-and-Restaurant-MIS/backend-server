@@ -1,5 +1,6 @@
 package com.luxury.reservation_service.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class Customer {
     private String email;
     private String phone;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "customer")
     private Reservation reservation;
 }
