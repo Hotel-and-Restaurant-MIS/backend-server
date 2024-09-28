@@ -34,7 +34,10 @@ public class MenuItem {
     )
 
     @JsonManagedReference
-
     private List<Tag> tags;
+
+    @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // Add this line
+    @JsonManagedReference // Prevent recursion
+    private List<AddOn> addOns; // New field for AddOns
 }
 //
