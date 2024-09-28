@@ -1,10 +1,10 @@
 package com.luxury.virtualwaiter_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +20,7 @@ public class Category {
 
     private String categoryName;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    private List<MenuItem> menuItems;
 }

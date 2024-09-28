@@ -1,5 +1,7 @@
 package com.luxury.virtualwaiter_service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +21,7 @@ public class Tag {
 
     private String tagName;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "tags")
     private List<MenuItem> menuItems;
 }
