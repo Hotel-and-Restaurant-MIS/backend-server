@@ -1,10 +1,9 @@
 package com.luxury.employee_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,4 +18,7 @@ public class EmployeeRole {
 
     private String roleType;
     private Double salary;
+
+    @OneToMany(mappedBy = "employeeRole")
+    private List<Employee> employees;
 }
