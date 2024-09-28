@@ -1,5 +1,6 @@
 package com.luxury.employee_service.controller;
 
+import com.luxury.employee_service.dto.EmployeeDto;
 import com.luxury.employee_service.model.Employee;
 import com.luxury.employee_service.rto.EmployeeRecord;
 import com.luxury.employee_service.service.EmployeeService;
@@ -25,7 +26,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/add")
-    public Employee addEmployee(@RequestBody EmployeeRecord employeeRecord) {
+    public EmployeeDto addEmployee(@RequestBody EmployeeRecord employeeRecord) {
         return employeeService.addEmployee(employeeRecord);
     }
 }
