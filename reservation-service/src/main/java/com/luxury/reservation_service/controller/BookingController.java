@@ -1,5 +1,6 @@
 package com.luxury.reservation_service.controller;
 
+import com.luxury.reservation_service.dto.BookingDTO;
 import com.luxury.reservation_service.model.Booking;
 import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.model.RoomCount;
@@ -26,8 +27,10 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+    @PostMapping("/add")
+
     @GetMapping("/all")
-    public ResponseEntity<List<Booking>> getAllBookings() {
+    public ResponseEntity<List<BookingDTO>> getAllBookings() {
         //Get all bookings
         return bookingService.getAllBookings();
     }

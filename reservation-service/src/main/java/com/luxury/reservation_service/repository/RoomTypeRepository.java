@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RoomTypeRepository extends JpaRepository<RoomType, Long> {
+public interface RoomTypeRepository extends JpaRepository<RoomType, String> {
 
     @Query("SELECT new com.luxury.reservation_service.dto.RoomTypeDTO(r.roomTypeName, r.pricePerDay) " +
             "FROM RoomType r")
