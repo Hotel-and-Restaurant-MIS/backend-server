@@ -1,6 +1,7 @@
 package com.luxury.reservation_service.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,10 +27,12 @@ public class Reservation {
     private Integer roomQuantity;
 
     @OneToOne
+    @JsonManagedReference
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "room_type_name", nullable = false)
     private RoomType roomType;
 }
