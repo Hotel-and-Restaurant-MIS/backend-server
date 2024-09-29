@@ -1,9 +1,11 @@
 package com.luxury.reservation_service.controller;
 
+import com.luxury.reservation_service.dto.ReservationDTO;
 import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.dto.ReservationRequest;
 import com.luxury.reservation_service.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +27,7 @@ public class ReservationController {
     }
 
     @GetMapping("/all")
-    public List<Reservation> getAllReservations() {
+    public ResponseEntity<List<ReservationDTO>> getAllReservations() {
         return reservationService.getAllReservations();
     }
 

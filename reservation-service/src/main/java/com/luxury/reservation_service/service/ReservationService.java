@@ -1,14 +1,21 @@
 package com.luxury.reservation_service.service;
 
+import com.luxury.reservation_service.dto.BookingDTO;
+import com.luxury.reservation_service.dto.ReservationDTO;
 import com.luxury.reservation_service.dto.ReservationRequest;
+import com.luxury.reservation_service.model.Booking;
 import com.luxury.reservation_service.model.Customer;
 import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.model.RoomType;
 import com.luxury.reservation_service.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -47,9 +54,39 @@ public class ReservationService {
         }
     }
 
+
     // Method to get a list of all reservations
-    public List<Reservation> getAllReservations() {
-        // Retrieve and return all reservations
-        return reservationRepository.findAll();
+    public ResponseEntity<List<ReservationDTO>> getAllReservations() {
+        // Fetch all bookings from the repository
+        List<Reservation> reservations = reservationRepository.findAll();
+
+        // Map the list of Booking entities to BookingDTOs
+        List<ReservationDTO> reservationDTOs = reservations.stream().map(reservation -> {
+
+            // Use the builder to create BookingDTO
+            return ReservationDTO.builder()
+                    .reservationID(reservation.getReservationId())
+                    .roomTypeName(reservation.getRoomType().getRoomTypeName())// Set to null as we're not using RoomType directly in BookingDTO
+                    .checkinDate(reservation.getCheckinDate())
+                    .checkoutDate(reservation.getCheckoutDate())
+                    .roomQuantity(reservation.getRoomQuantity())
+                    .status("OnGoing") // Force status to "Booked"
+                    .totalPrice(calculateTotalPrice(reservation)) // Use the room type price for calculation
+                    .customer(reservation.getCustomer())
+                    .build();
+        }).collect(Collectors.toList());
+
+        // Return the list of BookingDTOs with HTTP status 200 OK
+        return new ResponseEntity<>(reservationDTOs, HttpStatus.OK);
+    }
+
+    private Double calculateTotalPrice(Reservation reservation) {
+
+        // Calculate the number of days between check-in and check-out dates
+        long dayCount = ChronoUnit.DAYS.between(reservation.getCheckinDate(), reservation.getCheckoutDate());
+        double pricePerDay = reservation.getRoomType().getPricePerDay();
+        Integer roomCount = reservation.getRoomQuantity();
+
+        return dayCount*pricePerDay*roomCount;
     }
 }
