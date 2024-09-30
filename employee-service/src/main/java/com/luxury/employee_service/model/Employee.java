@@ -1,5 +1,6 @@
 package com.luxury.employee_service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,5 +22,6 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name="role_id", nullable=false)
+    @JsonBackReference
     private EmployeeRole employeeRole;
 }

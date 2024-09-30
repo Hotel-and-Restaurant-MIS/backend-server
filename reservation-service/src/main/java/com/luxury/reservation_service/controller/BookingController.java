@@ -29,6 +29,7 @@ public class BookingController {
 
     @PostMapping("/add")
 
+
     @GetMapping("/all")
     public ResponseEntity<List<BookingDTO>> getAllBookings() {
         //Get all bookings

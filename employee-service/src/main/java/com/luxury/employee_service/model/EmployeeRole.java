@@ -1,5 +1,6 @@
 package com.luxury.employee_service.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,5 +21,6 @@ public class EmployeeRole {
     private Double salary;
 
     @OneToMany(mappedBy = "employeeRole")
+    @JsonManagedReference
     private List<Employee> employees;
 }
