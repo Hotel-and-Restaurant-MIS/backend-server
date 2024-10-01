@@ -27,7 +27,7 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
 
 
     @GetMapping("/all")
