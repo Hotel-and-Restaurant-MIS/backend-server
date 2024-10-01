@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reservation-service
-        image: sunera25/sep-17-reservation-service:0.0.1
+        image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/reservation-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8083

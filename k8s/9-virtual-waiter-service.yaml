@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: virtual-waiter-service
-        image: sunera25/sep-17-virtual-waiter-service:0.0.1
+        image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/virtual-waiter-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8088

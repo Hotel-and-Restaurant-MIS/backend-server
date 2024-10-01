@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: review-service
-        image: sunera25/sep-17-review-service:0.0.1
+        image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/review-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

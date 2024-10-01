@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: employee-service
-        image: sunera25/sep-17-employee-service:0.0.1
+        image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/employee-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8084
