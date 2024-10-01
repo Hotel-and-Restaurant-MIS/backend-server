@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -23,8 +24,20 @@ public class EmployeeService {
         this.employeeRoleRepository = employeeRoleRepository;
     }
 
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeDto> getAllEmployees() {
+        // Retrieve all Employee entities from the repository
+        List<Employee> employees = employeeRepository.findAll();
+
+        // Map each Employee entity to an EmployeeDto and collect them into a list
+        return employees.stream()
+                .map(employee -> new EmployeeDto(
+                        employee.getName(),
+                        employee.getEmail(),
+                        employee.getNic(),
+                        employee.getPhoneNumber(),
+                        employee.getEmployeeRole().getRoleType())
+                ) // Mapping Employee to EmployeeDto
+                .collect(Collectors.toList()); // Collect to List<EmployeeDto>
     }
 
     public EmployeeDto addEmployee(EmployeeRecord employeeRecord) {
@@ -37,11 +50,11 @@ public class EmployeeService {
                             .email(employeeRecord.email())
                             .employeeRole(
                                     EmployeeRole.builder()
-                                            .roleId(employeeRecord.roleId()). build()
+                                            .roleId(employeeRecord.roleId()).build()
                             ).build()
             );
 
-            var role = employeeRoleRepository.findById( newEmployee.getEmployeeRole().getRoleId().intValue()).orElse(null);
+            var role = employeeRoleRepository.findById(newEmployee.getEmployeeRole().getRoleId().intValue()).orElse(null);
 
             assert role != null;
             return EmployeeDto.builder()
@@ -53,8 +66,7 @@ public class EmployeeService {
                     .build();
 
 
-
-        }catch(Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException("Failed to add reservation", e);
         }
     }
