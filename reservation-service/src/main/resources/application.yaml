@@ -21,7 +21,7 @@ spring:
       on-profile: dev
     import: "optional:configserver:http://localhost:8067/"
   application:
-    name: order-service
+    name: reservation-service
 
 server:
   port: 8081
@@ -45,7 +45,7 @@ spring:
       on-profile: dev-dis-eureka
     import: "optional:configserver:http://localhost:8067/"
   application:
-    name: order-service
+    name: reservation-service
 
 server:
   port: 8081
