@@ -33,7 +33,7 @@ public class BookingService {
     private RoomTypeRepository roomTypeRepository;
 
     public Double getRoomTypePrice(String roomTypeName) {
-        RoomType roomType = roomTypeRepository.findById(roomTypeName).orElse(null); // Change to String ID lookup
+        RoomType roomType = roomTypeRepository.findRoomTypeByRoomTypeName(roomTypeName).orElse(null); // Change to String ID lookup
         return roomType != null ? roomType.getPricePerDay() : 0.0; // Return the price or 0 if not found
     }
 
@@ -77,7 +77,6 @@ public class BookingService {
     private Double calculateTotalPrice(Booking booking, Double roomTypePrice) {
         // Calculate the number of days between check-in and check-out dates
         long dayCount = ChronoUnit.DAYS.between(booking.getCheckinDate(), booking.getCheckoutDate());
-
         return booking.getRoomQuantity() * roomTypePrice * dayCount;
     }
 
