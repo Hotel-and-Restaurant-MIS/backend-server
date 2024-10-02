@@ -27,9 +27,6 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-//    @PostMapping("/add")
-
-
     @GetMapping("/all")
     public ResponseEntity<List<BookingDTO>> getAllBookings() {
         //Get all bookings
