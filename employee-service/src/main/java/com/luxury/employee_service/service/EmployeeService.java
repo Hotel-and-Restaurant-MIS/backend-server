@@ -35,7 +35,8 @@ public class EmployeeService {
                         employee.getEmail(),
                         employee.getNic(),
                         employee.getPhoneNumber(),
-                        employee.getEmployeeRole().getRoleType())
+                        employee.getEmployeeRole().getRoleType(),
+                        employee.getEmployeeId())
                 ) // Mapping Employee to EmployeeDto
                 .collect(Collectors.toList()); // Collect to List<EmployeeDto>
     }
@@ -63,8 +64,8 @@ public class EmployeeService {
                     .nic(newEmployee.getNic())
                     .phoneNumber(newEmployee.getPhoneNumber())
                     .role(role.getRoleType())
+                    .employeeId(newEmployee.getEmployeeId())
                     .build();
-
 
         } catch (Exception e) {
             throw new RuntimeException("Failed to add reservation", e);

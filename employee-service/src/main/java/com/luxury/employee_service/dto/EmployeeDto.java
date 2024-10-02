@@ -8,7 +8,8 @@ public record EmployeeDto(
         String nic,
         String email,
         String phoneNumber,
-        String role
+        String role,
+        Long employeeId
 ) {
 }
 //
