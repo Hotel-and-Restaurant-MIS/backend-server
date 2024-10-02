@@ -26,7 +26,7 @@ public class Reservation {
     private LocalDate checkoutDate;
     private Integer roomQuantity;
 
-    @OneToOne
+    @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;

@@ -6,6 +6,7 @@ import com.luxury.reservation_service.model.RoomType;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,8 +23,10 @@ public class BookingDTO {
     private String status;
     private Double totalPrice;
     private Customer customer;
+    private List<String> reservedRoomsNumbers;
 
     public BookingDTO() {
         this.status = "Completed";  // Always set status to "Booked"
     }
+
 }
