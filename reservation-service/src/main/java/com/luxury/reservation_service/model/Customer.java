@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,6 +22,10 @@ public class Customer {
     private String phone;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "customer")
-    private Reservation reservation;
+    @OneToMany(mappedBy = "customer")
+    private List<Reservation> reservations;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private List<Booking> bookings;
 }

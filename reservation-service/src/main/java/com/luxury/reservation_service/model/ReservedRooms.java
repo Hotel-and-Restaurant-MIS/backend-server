@@ -21,5 +21,5 @@ public class ReservedRooms {
 
     @OneToOne
     @JoinColumn(name = "room_id")
-    private RoomType roomType;
+    private Rooms rooms;
 }
