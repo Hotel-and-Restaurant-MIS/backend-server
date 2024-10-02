@@ -56,7 +56,7 @@ public class BookingService {
 
             // Use the builder to create BookingDTO
             return BookingDTO.builder()
-                    .bookingID(booking.getBookingID())
+                    .bookingID(booking.getBookingId())
                     .roomTypeName(booking.getRoomTypeName())// Set to null as we're not using RoomType directly in BookingDTO
                     .checkinDate(booking.getCheckinDate())
                     .checkoutDate(booking.getCheckoutDate())
