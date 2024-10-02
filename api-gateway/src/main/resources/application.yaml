@@ -11,7 +11,7 @@ spring:
         - id: RESERVATION-SERVICE
           uri: lb://RESERVATION-SERVICE
           predicates:
-            - Path=/reservations/**, /bookings/**, /customer/**, /roomtype/**
+            - Path=/reservations/**, /bookings/**, /customer/**, /roomtype/**, /rooms/**
         - id: EMPLOYEE-SERVICE
           uri: lb://EMPLOYEE-SERVICE
           predicates:
