@@ -1,10 +1,10 @@
 package com.luxury.virtualwaiter_service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.awt.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,22 +20,21 @@ public class OrderItem {
 
     private String specialNote;
     private Integer quantity;
-    private Date dateTime;
     private Double totalPrice;
 
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "menu_item_id", nullable = false)
     private MenuItem menuItem;
 
-//    @ManyToOne
-////    @JoinColumn(name = "table_id", nullable = false)
-//    private SingleTableOrder singleTableOrder;
-////
-//    @OneToOne
-//    @JoinColumn(name = "order_id", nullable = false)
-//    private SingleTableOrder singleTableOrder2;
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "order_id", nullable = false)
+    private SingleTableOrder singleTableOrder;
 
-    @OneToMany
-    private List<AddOn> addOnList;
+    @OneToMany(mappedBy = "orderItem", fetch = FetchType.EAGER)
+    private List<SelectedAddOn> selectedAddOns;
+
+
 
 }

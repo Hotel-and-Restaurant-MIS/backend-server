@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class MenuItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuItemId;
@@ -22,22 +23,23 @@ public class MenuItem {
     private String imageUrl;
     private Double menuItemPrice;
 
+    // Many MenuItems belong to one Category
     @ManyToOne
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
 
-    @ManyToMany(fetch = FetchType.EAGER) // Eager fetching to ensure tags are loaded
+    // Many MenuItems have many Tags
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)  // LAZY fetching to avoid performance issues
     @JoinTable(
             name = "menu_item_tag",
             joinColumns = @JoinColumn(name = "menu_item_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-
-    @JsonManagedReference
+    @JsonManagedReference  // Handles one side of the relationship in JSON serialization
     private List<Tag> tags;
 
-    @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // Add this line
-    @JsonManagedReference // Prevent recursion
-    private List<AddOn> addOns; // New field for AddOns
+    // One MenuItem can have multiple AddOns
+    @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // LAZY fetching for better performance
+    @JsonManagedReference  // Prevents recursion when serializing to JSON
+    private List<AddOn> addOns;
 }
-//
