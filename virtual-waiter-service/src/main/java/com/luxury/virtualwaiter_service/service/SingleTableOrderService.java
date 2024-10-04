@@ -23,8 +23,8 @@ public class SingleTableOrderService {
     private final SingleTableOrderRepository singleTableOrderRepository;
     private final OrderItemRepository orderItemRepository;
     private final SelectedAddOnRepository selectedAddOnRepository;
-    private final AddOnRepository addOnRepository;
     private final StatusRepository statusRepository;
+    private final MenuItemRepository menuItemRepository;
 
     public static final Logger LOG = LoggerFactory.getLogger(SingleTableOrderService.class);
 
@@ -32,13 +32,13 @@ public class SingleTableOrderService {
     public SingleTableOrderService(SingleTableOrderRepository singleTableOrderRepository,
                                    OrderItemRepository orderItemRepository,
                                    SelectedAddOnRepository selectedAddOnRepository,
-                                   AddOnRepository addOnRepository,
-                                   StatusRepository statusRepository) {
+                                   StatusRepository statusRepository,
+                                   MenuItemRepository menuItemRepository) {
         this.singleTableOrderRepository = singleTableOrderRepository;
         this.orderItemRepository = orderItemRepository;
         this.selectedAddOnRepository = selectedAddOnRepository;
-        this.addOnRepository = addOnRepository;
         this.statusRepository = statusRepository;
+        this.menuItemRepository = menuItemRepository;
     }
 
     public ResponseEntity<List<SingleTableOrder>> getAllSingleTableOrders() {
@@ -81,6 +81,9 @@ public class SingleTableOrderService {
             OrderItem savedOrderItem = orderItemRepository.save(orderItem);
             orderItems.add(savedOrderItem); // Add to the list of saved items
 
+            MenuItem menuItem = menuItemRepository.findById(Long.parseLong(itemDTO.getMenuItemId())).orElse(null);
+            orderItem.setMenuItem(menuItem);
+
             //Save each selected add-on
             for (String addonId : itemDTO.getAddonList()) {
                 SelectedAddOn selectedAddOn = SelectedAddOn.builder()
@@ -101,8 +104,11 @@ public class SingleTableOrderService {
         SingleTableOrder newOrderSaved = singleTableOrderRepository.findById(savedOrder.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
+        List<OrderItem> orderItemList = orderItemRepository.findAllBySingleTableOrder(newOrderSaved);
+        newOrderSaved.setOrderItems(orderItemList);
+
         LOG.info(newOrderSaved.toString());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(newOrderSaved);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedOrder);
     }
 }

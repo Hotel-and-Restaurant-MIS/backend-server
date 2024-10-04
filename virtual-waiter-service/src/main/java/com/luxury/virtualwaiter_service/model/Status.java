@@ -1,10 +1,10 @@
 package com.luxury.virtualwaiter_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,4 +18,8 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long statusId;
     private String statusName;
+
+    @OneToMany(mappedBy = "status")
+    @JsonBackReference
+    private List<SingleTableOrder> singleTableOrders;
 }

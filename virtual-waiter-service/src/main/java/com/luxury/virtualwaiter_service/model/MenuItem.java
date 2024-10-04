@@ -29,13 +29,14 @@ public class MenuItem {
     private Category category;
 
     // Many MenuItems have many Tags
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)  // LAZY fetching to avoid performance issues
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)  // LAZY fetching to avoid performance issues
     @JoinTable(
             name = "menu_item_tag",
             joinColumns = @JoinColumn(name = "menu_item_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    @JsonManagedReference  // Handles one side of the relationship in JSON serialization
+    @JsonManagedReference
     private List<Tag> tags;
 
     // One MenuItem can have multiple AddOns

@@ -27,8 +27,8 @@ public class AddOn {
     @JsonBackReference // Prevent recursion from the other side
     private MenuItem menuItem;
 
-    @OneToMany(mappedBy = "addOn", fetch = FetchType.EAGER)
-    @JsonManagedReference // To manage the relationship
+    @JsonIgnore
+    @OneToMany(mappedBy = "addOn", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SelectedAddOn> selectedAddOns;
 
 }

@@ -26,12 +26,13 @@ public class SingleTableOrder {
     private LocalDateTime dateTime;
     private Double totalPrice;
 
-    @OneToMany(mappedBy = "singleTableOrder", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
+
+    @OneToMany(mappedBy = "singleTableOrder", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<OrderItem> orderItems;
 
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "status_id", nullable = false)
-    private Status status;
+
 }

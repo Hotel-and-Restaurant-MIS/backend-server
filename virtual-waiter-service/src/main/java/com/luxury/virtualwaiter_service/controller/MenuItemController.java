@@ -1,5 +1,6 @@
 package com.luxury.virtualwaiter_service.controller;
 
+
 import com.luxury.virtualwaiter_service.model.MenuItem;
 import com.luxury.virtualwaiter_service.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class MenuItemController {
     public MenuItemController(MenuItemService menuItemService) {
         this.menuItemService = menuItemService;
     }
+
 
     @GetMapping("/all")
     public List<MenuItem> getAllMenuItems() {

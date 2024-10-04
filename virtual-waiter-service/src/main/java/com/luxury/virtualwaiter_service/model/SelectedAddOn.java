@@ -17,13 +17,14 @@ public class SelectedAddOn {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long selectedAddOnId;
 
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "add_on_id")
+    @JsonManagedReference
+    @JoinColumn(name = "add_on_id",nullable = false)
     private AddOn addOn;
 
     @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "order_item_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_item_id",nullable = false)
     private OrderItem orderItem;
 }

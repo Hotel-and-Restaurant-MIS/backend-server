@@ -23,7 +23,7 @@ public class OrderItem {
     private Double totalPrice;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_item_id", nullable = false)
     private MenuItem menuItem;
 
