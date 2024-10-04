@@ -6,9 +6,52 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:mysql://mysql-2177d56c-hotel-manager.k.aivencloud.com:14405/review_db?ssl-mode=REQUIRED
+    url: jdbc:mysql://mysql-2177d56c-hotel-manager.k.aivencloud.com:14405/employee_db?ssl-mode=REQUIRED
     username: avnadmin
     password: AVNS_5xwlPIz21aKxECRK3nZ
     driver-class-name: com.mysql.cj.jdbc.Driver
   config:
     import: "optional:${SPRING_CONFIG_IMPORT}"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import: "optional:configserver:http://localhost:8067/"
+  application:
+    name: review-service
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:8761/eureka/"
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev-dis-eureka
+    import: "optional:configserver:http://localhost:8067/"
+  application:
+    name: review-service
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    enabled: false
+
+---
