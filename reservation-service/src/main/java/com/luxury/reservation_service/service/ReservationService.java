@@ -7,6 +7,7 @@ import com.luxury.reservation_service.model.Booking;
 import com.luxury.reservation_service.model.Customer;
 import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.model.RoomType;
+import com.luxury.reservation_service.repository.CustomerRepository;
 import com.luxury.reservation_service.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +24,14 @@ import static org.springframework.cloud.client.discovery.ReactiveDiscoveryClient
 public class ReservationService {
 
     private final ReservationRepository reservationRepository;
+    private final CustomerRepository customerRepository;
 
     // Constructor for injecting the ReservationRepository dependency
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository) {
+    public ReservationService(ReservationRepository reservationRepository ,
+                              CustomerRepository customerRepository) {
         this.reservationRepository = reservationRepository;
+        this.customerRepository = customerRepository;
     }
 
     // Method to add a new reservation
@@ -94,12 +98,15 @@ public class ReservationService {
 
     public ResponseEntity<Void> removeReservation(Long reservationID) {
         try {
+
+            Reservation reservation  = reservationRepository.findById(reservationID).orElse(null);
             // Check if the reservation exists
-            if (!reservationRepository.existsById(reservationID)) {
+            if (reservation == null) {
                 // Return 404 Not Found if the reservation does not exist
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
 
+            customerRepository.deleteById(reservation.getCustomer().getCustomerId());
             // Delete the reservation by ID
             reservationRepository.deleteById(reservationID);
 
