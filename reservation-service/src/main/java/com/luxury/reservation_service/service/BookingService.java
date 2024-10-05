@@ -115,21 +115,16 @@ public class BookingService {
     public ResponseEntity<BookingDTO> addBooking(BookingRequestDTO bookingRequestDTO) {
         Customer customer;
 
-        // Check if the customer already exists based on email
-        customer = customerRepository.findByNic(bookingRequestDTO.getNic());
+        // Create a new Customer entity using the builder pattern
+        customer = Customer.builder()
+                .name(bookingRequestDTO.getName())
+                .email(bookingRequestDTO.getEmail())
+                .phone(bookingRequestDTO.getPhoneNumber())
+                .nic(bookingRequestDTO.getNic())
+                .build();
 
-        if (customer == null) {
-            // Create a new Customer entity using the builder pattern
-            customer = Customer.builder()
-                    .name(bookingRequestDTO.getName())
-                    .email(bookingRequestDTO.getEmail())
-                    .phone(bookingRequestDTO.getPhoneNumber())
-                    .nic(bookingRequestDTO.getNic())
-                    .build();
-
-            // Save the new customer
-            customerRepository.save(customer);
-        }
+        // Save the new customer
+        customerRepository.save(customer);
 
         Booking booking = new Booking();
         booking.setCustomer(customer);

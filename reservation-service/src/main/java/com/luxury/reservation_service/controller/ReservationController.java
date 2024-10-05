@@ -31,4 +31,10 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
+    @DeleteMapping("/remove")
+    public ResponseEntity<Void> removeReservation(@RequestParam Long reservationId) {
+        return reservationService.removeReservation(reservationId);
     }
+
+
+}

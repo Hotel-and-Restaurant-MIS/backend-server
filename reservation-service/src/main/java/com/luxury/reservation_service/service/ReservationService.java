@@ -17,6 +17,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.springframework.cloud.client.discovery.ReactiveDiscoveryClient.LOG;
+
 @Service
 public class ReservationService {
 
@@ -89,4 +91,25 @@ public class ReservationService {
 
         return dayCount*pricePerDay*roomCount;
     }
+
+    public ResponseEntity<Void> removeReservation(Long reservationID) {
+        try {
+            // Check if the reservation exists
+            if (!reservationRepository.existsById(reservationID)) {
+                // Return 404 Not Found if the reservation does not exist
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+
+            // Delete the reservation by ID
+            reservationRepository.deleteById(reservationID);
+
+            // Return 204 No Content after successful deletion
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            LOG.error("Error occurred while removing reservation", e);
+            // Return 500 Internal Server Error in case of an exception
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
