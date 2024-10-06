@@ -2,6 +2,7 @@ package com.luxury.virtualwaiter_service.service;
 
 import com.luxury.virtualwaiter_service.dto.OrderItemDTO;
 import com.luxury.virtualwaiter_service.dto.OrderRequestDTO;
+import com.luxury.virtualwaiter_service.dto.StatusDTO;
 import com.luxury.virtualwaiter_service.model.*;
 import com.luxury.virtualwaiter_service.repository.*;
 import jakarta.transaction.Transactional;
@@ -84,6 +85,9 @@ public class SingleTableOrderService {
             MenuItem menuItem = menuItemRepository.findById(Long.parseLong(itemDTO.getMenuItemId())).orElse(null);
             orderItem.setMenuItem(menuItem);
 
+
+            // Create and save each selected add-on
+            List<SelectedAddOn> selectedAddOns = new ArrayList<>();
             //Save each selected add-on
             for (String addonId : itemDTO.getAddonList()) {
                 SelectedAddOn selectedAddOn = SelectedAddOn.builder()
@@ -96,19 +100,44 @@ public class SingleTableOrderService {
                         .build();
 
                 selectedAddOnRepository.save(selectedAddOn); // Save the selected add-on
+                selectedAddOns.add(selectedAddOn);
             }
+
+            // Assuming MenuItem has a method to set selected add-ons
+            orderItem.setSelectedAddOns(selectedAddOns);
         }
+
 
         savedOrder.setOrderItems(orderItems);
 
-        SingleTableOrder newOrderSaved = singleTableOrderRepository.findById(savedOrder.getOrderId())
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+              List<OrderItem> orderItemList = orderItemRepository.findAllBySingleTableOrder(savedOrder);
+        savedOrder.setOrderItems(orderItemList);
 
-        List<OrderItem> orderItemList = orderItemRepository.findAllBySingleTableOrder(newOrderSaved);
-        newOrderSaved.setOrderItems(orderItemList);
-
-        LOG.info(newOrderSaved.toString());
+        LOG.info(savedOrder.toString());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedOrder);
     }
+
+    public ResponseEntity<SingleTableOrder> updateStatus(StatusDTO statusDTO) {
+
+        SingleTableOrder singleTableOrder = singleTableOrderRepository.findById(statusDTO.getOrderId()).orElse(null);
+        //Check order is exist
+        if (singleTableOrder == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Status status = statusRepository.findByStatusName(statusDTO.getStatus());
+        //check status is exist
+        if (status == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        //update status
+        singleTableOrder.setStatus(status);
+        singleTableOrderRepository.save(singleTableOrder);
+
+        return ResponseEntity.ok(singleTableOrder);
+
+    }
+
 }

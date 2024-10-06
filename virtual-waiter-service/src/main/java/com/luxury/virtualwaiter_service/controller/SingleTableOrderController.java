@@ -2,6 +2,7 @@ package com.luxury.virtualwaiter_service.controller;
 
 
 import com.luxury.virtualwaiter_service.dto.OrderRequestDTO;
+import com.luxury.virtualwaiter_service.dto.StatusDTO;
 import com.luxury.virtualwaiter_service.model.SingleTableOrder;
 import com.luxury.virtualwaiter_service.service.SingleTableOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class SingleTableOrderController {
     @PostMapping("/add")
     public ResponseEntity<SingleTableOrder> addSingleTableOrder(@RequestBody OrderRequestDTO orderRequestDTO) {
         return singleTableOrderService.addSingleTableOrder(orderRequestDTO);
+    }
+
+    @PutMapping("/updateStatus")
+    public ResponseEntity<SingleTableOrder> updateStatus(@RequestBody StatusDTO statusDTO) {
+        return singleTableOrderService.updateStatus(statusDTO);
     }
 }
