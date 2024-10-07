@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RestController
@@ -18,10 +18,12 @@ public class TempReviewController {
     private final TempReviewService tempReviewService;
 
     @Autowired
-    public TempReviewController(TempReviewService tempReviewService){this.tempReviewService = tempReviewService;}
+    public TempReviewController(TempReviewService tempReviewService) {
+        this.tempReviewService = tempReviewService;
+    }
 
     @PostMapping("/add")
-        public TempReview addTempReview(@RequestBody TempReview tempReview) {
+    public TempReview addTempReview(@RequestBody TempReview tempReview) {
         return tempReviewService.addTempReview(tempReview);
     }
 
@@ -34,5 +36,5 @@ public class TempReviewController {
     public String getHello() {
         return "Hello There!";
     }
-    
+
 }
