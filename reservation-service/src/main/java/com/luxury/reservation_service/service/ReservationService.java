@@ -9,6 +9,7 @@ import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.model.RoomType;
 import com.luxury.reservation_service.repository.CustomerRepository;
 import com.luxury.reservation_service.repository.ReservationRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -96,6 +97,7 @@ public class ReservationService {
         return dayCount*pricePerDay*roomCount;
     }
 
+    @Transactional
     public ResponseEntity<Void> removeReservation(Long reservationID) {
         try {
 
@@ -106,9 +108,10 @@ public class ReservationService {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
 
-            customerRepository.deleteById(reservation.getCustomer().getCustomerId());
             // Delete the reservation by ID
             reservationRepository.deleteById(reservationID);
+            customerRepository.deleteById(reservation.getCustomer().getCustomerId());
+
 
             // Return 204 No Content after successful deletion
             return ResponseEntity.noContent().build();
