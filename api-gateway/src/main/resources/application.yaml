@@ -28,8 +28,8 @@ spring:
     import: "optional:${SPRING_CONFIG_IMPORT}"
 
 
-server:
-  ssl:
-    key-store-type: PKCS12
-    key-store: classpath:cert/certificate.p12
-    key-store-password: luxury
+#server:
+#  ssl:
+#    key-store-type: PKCS12
+#    key-store: classpath:cert/certificate.p12
+#    key-store-password: luxury
