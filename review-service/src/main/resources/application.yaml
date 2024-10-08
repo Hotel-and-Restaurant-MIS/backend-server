@@ -24,7 +24,7 @@ spring:
     name: review-service
 
 server:
-  port: 8082
+  port: 8089
 
 eureka:
   client:
@@ -45,10 +45,10 @@ spring:
       on-profile: dev-dis-eureka
     import: "optional:configserver:http://localhost:8067/"
   application:
-    name: order-service
+    name: review-service
 
 server:
-  port: 8082
+  port: 8089
 
 eureka:
   client:
