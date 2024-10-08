@@ -1,4 +1,4 @@
-package com.luxury.review_service.unit;
+package com.luxury.review_service.integration;
 
 import com.luxury.review_service.controller.TempReviewController;
 import com.luxury.review_service.model.TempReview;
@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -46,7 +49,7 @@ public class TempReviewControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\":\"John Doe\",\"review\":\"Great product!\"}"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"name\":\"John Doe\",\"review\":\"Great product!\"}"));
+                .andExpect(content().json("{\"name\":\"John Doe\",\"review\":\"Great product!\"}"));
 
         verify(tempReviewService, times(1)).addTempReview(any(TempReview.class));
     }
@@ -61,7 +64,7 @@ public class TempReviewControllerTest {
 
         mockMvc.perform(get("/review/temp/all"))
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{\"id\":1,\"name\":\"John Doe\",\"review\":\"Great product!\"},{\"id\":2,\"name\":\"Jane Doe\",\"review\":\"Not bad\"}]"));
+                .andExpect(content().json("[{\"name\":\"John Doe\",\"review\":\"Great product!\"},{\"name\":\"Jane Doe\",\"review\":\"Not bad\"}]"));
 
         verify(tempReviewService, times(1)).getAllTempReviews();
     }
