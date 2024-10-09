@@ -40,7 +40,7 @@ public class TempReviewController {
     }
 
     @PostMapping("/approve")
-    public ResponseEntity<Void> approveTempReview(@RequestParam Long tempReviewId) {
+    public ResponseEntity<ReviewDTO> approveTempReview(@RequestParam Long tempReviewId) {
         return tempReviewService.approveTempReview(tempReviewId);
     }
 

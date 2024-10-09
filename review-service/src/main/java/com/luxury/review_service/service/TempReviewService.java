@@ -48,7 +48,7 @@ public class TempReviewService {
         return reviewDTOList;
     }
 
-    public ResponseEntity<Void> approveTempReview(Long tempReviewId) {
+    public ResponseEntity<ReviewDTO> approveTempReview(Long tempReviewId) {
 
         TempReview tempReview = tempReviewRepository.findById(tempReviewId).orElse(null);
         if (tempReview == null) {
@@ -62,8 +62,16 @@ public class TempReviewService {
 
         reviewRepository.save(newReview);
         tempReviewRepository.deleteById(tempReviewId);
+        Review savedReview = reviewRepository.findById(tempReviewId).orElse(null);
 
-        return ResponseEntity.noContent().build();
+        ReviewDTO reviewDTO = ReviewDTO.builder()
+                .id(savedReview.getId())
+                .name(savedReview.getName())
+                .review(savedReview.getReview())
+                .status("Approved")
+        .build();
+
+        return ResponseEntity.ok(reviewDTO);
     }
 
     public ResponseEntity<Void> rejectTempReview(Long tempReviewId) {
