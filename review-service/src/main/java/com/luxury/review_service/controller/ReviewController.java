@@ -1,5 +1,6 @@
 package com.luxury.review_service.controller;
 
+import com.luxury.review_service.dto.ReviewDTO;
 import com.luxury.review_service.model.Review;
 import com.luxury.review_service.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ReviewController {
     }
 
     @GetMapping("/approved")
-    public List<Review> getAllTempReviews() {
+    public List<ReviewDTO> getAllTempReviews() {
         return reviewService.getAllReviews();
     }
 }

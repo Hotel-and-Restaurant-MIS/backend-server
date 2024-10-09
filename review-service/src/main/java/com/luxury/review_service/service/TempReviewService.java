@@ -32,7 +32,7 @@ public class TempReviewService {
                     .id(tempReview.getId())
                     .name(tempReview.getName())
                     .review(tempReview.getReview())
-                    .status("Temp")
+                    .status("Pending")
                     .build();
 
             reviewDTOList.add(reviewDTO);
