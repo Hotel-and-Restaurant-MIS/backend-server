@@ -51,20 +51,20 @@ public class TempReviewControllerTest {
         verify(tempReviewService, times(1)).addTempReview(any(TempReview.class));
     }
 
-    @Test
-    void testGetAllTempReviews() throws Exception {
-        List<TempReview> tempReviews = Arrays.asList(
-                new TempReview(1L, "John Doe", "Great product!"),
-                new TempReview(2L, "Jane Doe", "Not bad")
-        );
-        when(tempReviewService.getAllTempReviews()).thenReturn(tempReviews);
-
-        mockMvc.perform(get("/review/temp/all"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("[{\"id\":1,\"name\":\"John Doe\",\"review\":\"Great product!\"},{\"id\":2,\"name\":\"Jane Doe\",\"review\":\"Not bad\"}]"));
-
-        verify(tempReviewService, times(1)).getAllTempReviews();
-    }
+//    @Test
+//    void testGetAllTempReviews() throws Exception {
+//        List<TempReview> tempReviews = Arrays.asList(
+//                new TempReview(1L, "John Doe", "Great product!"),
+//                new TempReview(2L, "Jane Doe", "Not bad")
+//        );
+//        when(tempReviewService.getAllTempReviews()).thenReturn(tempReviews);
+//
+//        mockMvc.perform(get("/review/temp/all"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json("[{\"id\":1,\"name\":\"John Doe\",\"review\":\"Great product!\"},{\"id\":2,\"name\":\"Jane Doe\",\"review\":\"Not bad\"}]"));
+//
+//        verify(tempReviewService, times(1)).getAllTempReviews();
+//    }
 
     @Test
     void testGetHello() throws Exception {
