@@ -1,9 +1,7 @@
 package com.luxury.reservation_service.service;
 
-import com.luxury.reservation_service.dto.BookingDTO;
 import com.luxury.reservation_service.dto.ReservationDTO;
 import com.luxury.reservation_service.dto.ReservationRequest;
-import com.luxury.reservation_service.model.Booking;
 import com.luxury.reservation_service.model.Customer;
 import com.luxury.reservation_service.model.Reservation;
 import com.luxury.reservation_service.model.RoomType;
