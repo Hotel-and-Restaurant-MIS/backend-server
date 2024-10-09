@@ -27,13 +27,13 @@ public class ReviewService {
     public List<ReviewDTO> getAllReviews() {
 
         List<ReviewDTO> reviewDTOList = new ArrayList<>();
-        List<TempReview> tempReviews = tempReviewRepository.findAll();
-        for (TempReview tempReview : tempReviews) {
+        List<Review> reviews = reviewRepository.findAll();
+        for (Review review : reviews) {
             // Assuming you have a builder pattern in ReviewDTO
             ReviewDTO reviewDTO = ReviewDTO.builder()
-                    .id(tempReview.getId())
-                    .name(tempReview.getName())
-                    .review(tempReview.getReview())
+                    .id(review.getId())
+                    .name(review.getName())
+                    .review(review.getReview())
                     .status("Approved")
                     .build();
 
