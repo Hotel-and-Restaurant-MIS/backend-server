@@ -87,7 +87,7 @@ public class ReservationService {
         return new ResponseEntity<>(reservationDTOs, HttpStatus.OK);
     }
 
-    private Double calculateTotalPrice(Reservation reservation) {
+    public Double calculateTotalPrice(Reservation reservation) {
 
         // Calculate the number of days between check-in and check-out dates
         long dayCount = ChronoUnit.DAYS.between(reservation.getCheckinDate(), reservation.getCheckoutDate());
