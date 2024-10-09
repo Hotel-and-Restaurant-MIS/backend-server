@@ -4,6 +4,7 @@ import com.luxury.review_service.dto.ReviewDTO;
 import com.luxury.review_service.model.TempReview;
 import com.luxury.review_service.service.TempReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,16 @@ public class TempReviewController {
     @GetMapping("/hello")
     public String getHello() {
         return "Hello There!";
+    }
+
+    @PostMapping("/approve")
+    public ResponseEntity<Void> approveTempReview(@RequestParam Long tempReviewId) {
+        return tempReviewService.approveTempReview(tempReviewId);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> deleteTempReview(@RequestParam Long tempReviewId) {
+        return tempReviewService.rejectTempReview(tempReviewId);
     }
 
 }

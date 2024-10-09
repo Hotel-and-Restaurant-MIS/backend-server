@@ -21,7 +21,7 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping("/approved")
+    @GetMapping("/all")
     public List<ReviewDTO> getAllTempReviews() {
         return reviewService.getAllReviews();
     }
