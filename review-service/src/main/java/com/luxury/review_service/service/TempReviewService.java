@@ -62,12 +62,11 @@ public class TempReviewService {
 
         reviewRepository.save(newReview);
         tempReviewRepository.deleteById(tempReviewId);
-        Review savedReview = reviewRepository.findById(tempReviewId).orElse(null);
 
         ReviewDTO reviewDTO = ReviewDTO.builder()
-                .id(savedReview.getId())
-                .name(savedReview.getName())
-                .review(savedReview.getReview())
+                .id(newReview.getId())
+                .name(newReview.getName())
+                .review(newReview.getReview())
                 .status("Approved")
         .build();
 
