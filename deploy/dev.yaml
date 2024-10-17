@@ -6,4 +6,4 @@ metadata:
   labels: {}
 description: dev
 gke:
-  cluster: projects/impressive-tome-429713-e9/locations/us-central1-c/clusters/hrmis-cluster-1
+  cluster: projects/forward-script-438915-v8/locations/us-central1-c/clusters/hrmis-cluster-1

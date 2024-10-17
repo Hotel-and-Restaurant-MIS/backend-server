@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/api-gateway
+        image: us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/api-gateway
         imagePullPolicy: Always 
         ports:
         - containerPort: 8060
@@ -44,7 +44,6 @@ metadata:
 spec:
   selector:
     app: api-gateway
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80

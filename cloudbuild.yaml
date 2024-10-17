@@ -8,11 +8,11 @@ steps:
   id: 'Package Config Server'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/config-server', './config-server' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/config-server', './config-server' ]
   id: 'Build Config Server Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/config-server' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/config-server' ]
   id: 'Push Config Server Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,11 +23,11 @@ steps:
   id: 'Package Eureka Server'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/eureka-server', './eureka-server' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/eureka-server', './eureka-server' ]
   id: 'Build Eureka Server Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/eureka-server' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/eureka-server' ]
   id: 'Push Eureka Server Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,11 +38,11 @@ steps:
   id: 'Package Employee Service'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/employee-service', './employee-service' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/employee-service', './employee-service' ]
   id: 'Build Employee Service Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/employee-service' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/employee-service' ]
   id: 'Push Employee Service Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,11 +53,11 @@ steps:
   id: 'Package Reservation Service'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/reservation-service', './reservation-service' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/reservation-service', './reservation-service' ]
   id: 'Build Reservation Service Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/reservation-service' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/reservation-service' ]
   id: 'Push Reservation Service Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,11 +68,11 @@ steps:
   id: 'Package Restaurant Order Service'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/restaurant-order-service', './restaurant-order-service' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/restaurant-order-service', './restaurant-order-service' ]
   id: 'Build Restaurant Order Service Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/restaurant-order-service' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/restaurant-order-service' ]
   id: 'Push Restaurant Order Service Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -83,11 +83,11 @@ steps:
   id: 'Package Review Service'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/review-service', './review-service' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/review-service', './review-service' ]
   id: 'Build Review Service Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/review-service' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/review-service' ]
   id: 'Push Review Service Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,11 +98,11 @@ steps:
   id: 'Package Virtual Waiter Service'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/virtual-waiter-service', './virtual-waiter-service' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/virtual-waiter-service', './virtual-waiter-service' ]
   id: 'Build Virtual Waiter Service Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/virtual-waiter-service' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/virtual-waiter-service' ]
   id: 'Push Virtual Waiter Service Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ steps:
   id: 'Package API Gateway'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/api-gateway', './api-gateway' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/api-gateway', './api-gateway' ]
   id: 'Build API Gateway Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/api-gateway' ]
+  args: ['push', 'us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/api-gateway' ]
   id: 'Push API Gateway Docker Image'
   
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------

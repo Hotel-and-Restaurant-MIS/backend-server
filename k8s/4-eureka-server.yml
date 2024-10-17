@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: us-central1-docker.pkg.dev/impressive-tome-429713-e9/hrmis-artifact-registry/eureka-server
+          image: us-central1-docker.pkg.dev/forward-script-438915-v8/hrmis-artifact-registry/eureka-server
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
