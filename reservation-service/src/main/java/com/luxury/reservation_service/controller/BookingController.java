@@ -2,6 +2,7 @@ package com.luxury.reservation_service.controller;
 
 import com.luxury.reservation_service.dto.BookingDTO;
 import com.luxury.reservation_service.dto.BookingRequestDTO;
+import com.luxury.reservation_service.dto.RoomCountDTO;
 import com.luxury.reservation_service.model.RoomCount;
 import com.luxury.reservation_service.service.BookingService;
 import com.luxury.reservation_service.service.ReservationService;
@@ -29,7 +30,7 @@ public class BookingController {
     }
 
     @GetMapping("/totalAvailableRoomCount")
-    public ResponseEntity<List<RoomCount>> getAvailableRoomCount(@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+    public ResponseEntity<List<RoomCountDTO>> getAvailableRoomCount(@RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from, @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
         return bookingService.getAvailableRoomCount(from, to);
     }
 

@@ -3,6 +3,7 @@ package com.luxury.reservation_service.service;
 import com.fasterxml.jackson.core.ErrorReportConfiguration;
 import com.luxury.reservation_service.dto.BookingDTO;
 import com.luxury.reservation_service.dto.BookingRequestDTO;
+import com.luxury.reservation_service.dto.RoomCountDTO;
 import com.luxury.reservation_service.exception.StoredProcedureCallException;
 import com.luxury.reservation_service.model.*;
 import com.luxury.reservation_service.repository.*;
@@ -93,20 +94,16 @@ public class BookingService {
         return booking.getRoomQuantity() * roomTypePrice * dayCount;
     }
 
-    // Method to get the available room count based on check-in and check-out dates
-    public ResponseEntity<List<RoomCount>> getAvailableRoomCount(LocalDate checkinDate, LocalDate checkoutDate) {
+    public ResponseEntity<List<RoomCountDTO>> getAvailableRoomCount(LocalDate checkinDate, LocalDate checkoutDate) {
         try {
-            // Call the repository to execute the stored procedure and get room count data
-            Map<String, Object> data = roomCountByCategoryRepository.getAvailableRoomCount(checkinDate, checkoutDate);
-            // Extract results from the stored procedure's result set
-            List<Map<String, Object>> results = (List<Map<String, Object>>) data.get("#result-set-1");
-            // Map the results to RoomCount objects
-            List<RoomCount> roomCounts = results.stream().map(result -> new RoomCount((String) result.get("room_type_name"), (Integer) result.get("available_count"))).toList();
+            // Call the repository to get available room counts
+            List<RoomCountDTO> roomCounts = roomsRepository.findAvailableRoomCount(checkinDate, checkoutDate);
+
             // Return the room counts with HTTP status 200 OK
             return new ResponseEntity<>(roomCounts, HttpStatus.OK);
-        } catch (StoredProcedureCallException e) {
-            // Log the error and return HTTP status 500 Internal Server Error if the stored procedure call fails
-            LOG.error("Stored Procedure Call Error in getAvailableRoomCount", e);
+        } catch (Exception e) {
+            // Log the error and return HTTP status 500 Internal Server Error
+            LOG.error("Error in getAvailableRoomCount", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
