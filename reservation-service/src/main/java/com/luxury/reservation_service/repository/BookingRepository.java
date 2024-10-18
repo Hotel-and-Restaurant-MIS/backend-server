@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-    List<Booking> findByRoomTypeName(RoomType roomTypeName);
     List<Booking> findByCheckoutDateBefore(LocalDate date);
 }
