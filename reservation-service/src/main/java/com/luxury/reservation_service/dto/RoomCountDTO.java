@@ -9,6 +9,6 @@ import lombok.*;
 @Builder
 public class RoomCountDTO {
     private String roomTypeName;
-    private Long availableCount;
+    private Integer availableCount;
 
 }
